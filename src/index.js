@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 import App from "./App";
 import store from "./store";
 import { Provider } from "react-redux";
-
 // store.dispatch(deposit(500));
 // store.dispatch(createCustomer("Aishwarya J", "12345678"));
 // console.log(store.getState());

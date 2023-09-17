@@ -1,24 +1,31 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createCustomer } from "./customerSlice";
 
 function Customer() {
   const [fullName, setFullName] = useState("");
   const [aadharNo, setAadharNo] = useState("");
 
-  function handleClick() {}
+  const dispatch = useDispatch();
+
+  function handleClick() {
+    if (!fullName || !aadharNo) return;
+    dispatch(createCustomer(fullName, aadharNo));
+  }
 
   return (
     <div>
       <h2>Create new customer</h2>
       <div className="inputs">
         <div>
-          <label>Customer full name</label>
+          <label>Enter full name</label>
           <input
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
         </div>
         <div>
-          <label>Aadhar No</label>
+          <label>Enter Aadhar No</label>
           <input
             value={aadharNo}
             onChange={(e) => setAadharNo(e.target.value)}

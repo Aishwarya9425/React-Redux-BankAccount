@@ -38,8 +38,3 @@ export function createCustomer(fullName, aadharNo) {
 export function updateName(fullName) {
   return { type: "customer/updateName", payload: fullName };
 }
-
-// store.dispatch(createCustomer("Aishwarya J", "12345678"));
-// console.log(store.getState());
-// store.dispatch(updateName("Deepika"));
-// console.log(store.getState());
