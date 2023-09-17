@@ -16,9 +16,9 @@ function AccountOperations() {
     balance,
   } = useSelector((store) => store.account);
 
-  console.log("currentLoan",currentLoan);
-  console.log("currentLoanPurpose",currentLoanPurpose);
-  console.log("balance",balance);
+  console.log("currentLoan", currentLoan);
+  console.log("currentLoanPurpose", currentLoanPurpose);
+  console.log("balance", balance);
 
   function handleDeposit() {
     if (!depositAmount) return;
@@ -35,7 +35,7 @@ function AccountOperations() {
 
   function handleRequestLoan() {
     if (!loanAmount || !loanPurpose) return;
-    dispatch(requestLoan({ loanAmount, loanPurpose }));
+    dispatch(requestLoan(loanAmount, loanPurpose));
     setLoanAmount("");
     setLoanPurpose("");
   }
@@ -104,7 +104,6 @@ function AccountOperations() {
             <button onClick={handlePayLoan}>Pay loan</button>
           </div>
         )}
-        
       </div>
     </div>
   );
