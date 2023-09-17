@@ -1,11 +1,62 @@
-const initialStateAccount = {
+import { createSlice } from "@reduxjs/toolkit";
+/* createSlice - automatically create action creators, can mutate state inside reducer */
+// Immer library
+
+const initialState = {
   balance: 0,
   loan: 0,
   loanPurpose: "",
   isLoading: false,
 };
 
-export default function accountReducer(state = initialStateAccount, action) {
+const accountSlice = createSlice({
+  name: "account",
+  initialState,
+  // one reducer for each action
+  reducers: {
+    deposit(state, action) {
+      // mutate state
+      state.balance = state.balance + action.payload;
+    },
+
+    withdraw(state, action) {
+      state.balance = state.balance - action.payload;
+    },
+
+    requestLoan: {
+      //prepare date before sending to reducer;
+      //to accept 2 arg for action payload use prepare
+      prepare(amount, purpose) {
+        return {
+          payload: { amount, purpose },
+        };
+      },
+
+      reducer(state, action) {
+        // by default action.payload receives only 1 arg
+        if (state.loan > 0) return;
+        state.loan = action.payload.amount;
+        state.loanPurpose = action.payload.purpose;
+        state.balance = state.balance + action.payload.amount;
+      },
+    },
+
+    payLoan(state, action) {
+      // order is imp as we are mutating the state
+      state.balance = state.balance - state.loan;
+      //1st do calc and then set loan to 0
+      state.loan = 0;
+      state.loanPurpose = "";
+    },
+  },
+});
+
+console.log(accountSlice);
+
+export const { deposit, withdraw, requestLoan, payLoan } = accountSlice.actions;
+export default accountSlice.reducer;
+
+/* export default function accountReducer(state = initialStateAccount, action) {
   switch (action.type) {
     case "account/deposit":
       return {
@@ -69,3 +120,4 @@ export function requestLoan(amount, purpose) {
 export function payLoan() {
   return { type: "account/payLoan" };
 }
+ */

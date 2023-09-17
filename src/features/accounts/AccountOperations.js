@@ -23,7 +23,9 @@ function AccountOperations() {
 
   function handleDeposit() {
     if (!depositAmount) return;
-    dispatch(deposit(depositAmount, currency));
+    // dispatch(deposit(depositAmount, currency));
+    dispatch(deposit(depositAmount));
+
     //here action is  not immediately dispatched but a function is dispatched
     //reset input field
     setDepositAmount("");
