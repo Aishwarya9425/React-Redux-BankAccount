@@ -27,7 +27,7 @@ function AccountOperations() {
     //here action is  not immediately dispatched but a function is dispatched
     //reset input field
     setDepositAmount("");
-    setCurrency("");
+    setCurrency("USD");
   }
 
   function handleWithdrawal() {
@@ -52,7 +52,12 @@ function AccountOperations() {
       <h2>Your account operations</h2>
       <div className="inputs">
         <div>
-          <label>Deposit</label>
+          <label>Deposit Amount</label>
+          <br />
+          <label>
+            Note: If currency selected is not USD, the amount is converted to
+            USD
+          </label>
           <input
             type="number"
             value={depositAmount}
@@ -74,7 +79,7 @@ function AccountOperations() {
         </div>
 
         <div>
-          <label>Withdraw</label>
+          <label>Withdraw 💲</label>
           <input
             type="number"
             value={withdrawalAmount}
@@ -86,7 +91,7 @@ function AccountOperations() {
         </div>
 
         <div>
-          <label>Request loan</label>
+          <label>Request loan 💲</label>
           <input
             type="number"
             value={loanAmount}
