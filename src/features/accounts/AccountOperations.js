@@ -14,6 +14,7 @@ function AccountOperations() {
     loan: currentLoan,
     loanPurpose: currentLoanPurpose,
     balance,
+    isLoading,
   } = useSelector((store) => store.account);
 
   console.log("currentLoan", currentLoan);
@@ -22,9 +23,11 @@ function AccountOperations() {
 
   function handleDeposit() {
     if (!depositAmount) return;
-    dispatch(deposit(depositAmount));
+    dispatch(deposit(depositAmount, currency));
+    //here action is  not immediately dispatched but a function is dispatched
     //reset input field
     setDepositAmount("");
+    setCurrency("");
   }
 
   function handleWithdrawal() {
@@ -65,7 +68,9 @@ function AccountOperations() {
             <option value="GBP">British Pound</option>
           </select>
 
-          <button onClick={handleDeposit}>Deposit {depositAmount}</button>
+          <button onClick={handleDeposit} disabled={isLoading}>
+            {isLoading ? "Converting to USD.." : ` Deposit ${depositAmount}`}
+          </button>
         </div>
 
         <div>
@@ -99,7 +104,7 @@ function AccountOperations() {
         {currentLoan > 0 && (
           <div>
             <span>
-              Pay back ₹{currentLoan} Reason : ({currentLoanPurpose}){" "}
+              Pay back 💲{currentLoan} Reason : ({currentLoanPurpose}){" "}
             </span>
             <button onClick={handlePayLoan}>Pay loan</button>
           </div>

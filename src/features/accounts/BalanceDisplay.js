@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 function formatCurrency(value) {
   return new Intl.NumberFormat("en", {
     style: "currency",
-    currency: "INR",
+    currency: "USD",
   }).format(value);
 }
 
 function BalanceDisplay({ balance }) {
-  return <div className="balance">{formatCurrency(balance)}</div>;
+  return (
+    <div className="balance">Converted to USD : {formatCurrency(balance)}</div>
+  );
 }
 
 //receive state obj from store
