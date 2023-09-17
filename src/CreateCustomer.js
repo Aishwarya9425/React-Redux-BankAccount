@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Customer() {
   const [fullName, setFullName] = useState("");
-  const [nationalId, setNationalId] = useState("");
+  const [aadharNo, setAadharNo] = useState("");
 
   function handleClick() {}
 
@@ -18,10 +18,10 @@ function Customer() {
           />
         </div>
         <div>
-          <label>National ID</label>
+          <label>Aadhar No</label>
           <input
-            value={nationalId}
-            onChange={(e) => setNationalId(e.target.value)}
+            value={aadharNo}
+            onChange={(e) => setAadharNo(e.target.value)}
           />
         </div>
         <button onClick={handleClick}>Create new customer</button>
