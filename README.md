@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+Site is live at : https://react-redux-bank-account.vercel.app/
+
+![app](https://github.com/Aishwarya9425/React-Redux-BankAccount/assets/51038336/5f76ffe3-5c99-4d3b-85f9-43143bf5c9ec)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
