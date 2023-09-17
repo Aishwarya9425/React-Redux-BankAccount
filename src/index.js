@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import store from "./store";
+import { Provider } from "react-redux";
 
 // store.dispatch(deposit(500));
 // store.dispatch(createCustomer("Aishwarya J", "12345678"));
@@ -22,6 +23,9 @@ import store from "./store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      {/* entire app has access to store */}
+      <App />
+    </Provider>
   </React.StrictMode>
 );
