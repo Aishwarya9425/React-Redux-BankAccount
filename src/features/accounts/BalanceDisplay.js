@@ -1,12 +1,23 @@
+import { connect } from "react-redux";
+
 function formatCurrency(value) {
   return new Intl.NumberFormat("en", {
     style: "currency",
-    currency: "USD",
+    currency: "INR",
   }).format(value);
 }
 
-function BalanceDisplay() {
-  return <div className="balance">{formatCurrency(123456)}</div>;
+function BalanceDisplay({ balance }) {
+  return <div className="balance">{formatCurrency(balance)}</div>;
 }
 
-export default BalanceDisplay;
+//receive state obj from store
+function mapStateToProps(state) {
+  return {
+    balance: state.account.balance,
+  };
+}
+
+//before react hooks - before useSelector and useDispatch
+//Connect API- takes a func mapStateToProps to return a new func
+export default connect(mapStateToProps)(BalanceDisplay);
